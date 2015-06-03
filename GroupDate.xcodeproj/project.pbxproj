@@ -16,6 +16,7 @@
 		3AAE3CAE1B1F220400623A23 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AAE3CAD1B1F220400623A23 /* Images.xcassets */; };
 		3AAE3CB11B1F220400623A23 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AAE3CAF1B1F220400623A23 /* LaunchScreen.xib */; };
 		3AAE3CBD1B1F220400623A23 /* GroupDateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAE3CBC1B1F220400623A23 /* GroupDateTests.m */; };
+		3AAE3CCB1B1F2C9A00623A23 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAE3CCA1B1F2C9A00623A23 /* Event.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,8 @@
 		3AAE3CB61B1F220400623A23 /* GroupDateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GroupDateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AAE3CBB1B1F220400623A23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3AAE3CBC1B1F220400623A23 /* GroupDateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroupDateTests.m; sourceTree = "<group>"; };
+		3AAE3CC91B1F2C9A00623A23 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		3AAE3CCA1B1F2C9A00623A23 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +71,8 @@
 		3AAE3C8E1B1F220400623A23 = {
 			isa = PBXGroup;
 			children = (
+				3AAE3CC91B1F2C9A00623A23 /* Event.h */,
+				3AAE3CCA1B1F2C9A00623A23 /* Event.m */,
 				3AAE3C991B1F220400623A23 /* GroupDate */,
 				3AAE3CB91B1F220400623A23 /* GroupDateTests */,
 				3AAE3C981B1F220400623A23 /* Products */,
@@ -227,6 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AAE3CCB1B1F2C9A00623A23 /* Event.m in Sources */,
 				3AAE3CA91B1F220400623A23 /* DetailViewController.m in Sources */,
 				3AAE3CA61B1F220400623A23 /* MasterViewController.m in Sources */,
 				3AAE3CA01B1F220400623A23 /* AppDelegate.m in Sources */,

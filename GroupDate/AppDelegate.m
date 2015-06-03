@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "DetailViewController.h"
 #import "MasterViewController.h"
+#import "Event.h"
 
 @interface AppDelegate ()
 
@@ -80,6 +81,9 @@
     
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"GroupDate.sqlite"];
+    
+    BOOL firstRun = ![storeURL checkResourceIsReachableAndReturnError:NULL];
+    
     NSError *error = nil;
     NSString *failureReason = @"There was an error creating or loading the application's saved data.";
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
@@ -93,6 +97,34 @@
         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
+    }
+    
+    if (firstRun)
+    {
+        NSManagedObjectContext *context = [[NSManagedObjectContext alloc] init];
+        [context setPersistentStoreCoordinator:_persistentStoreCoordinator];
+        
+        NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
+        [dateComponents setYear:2013];
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+        [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+        
+        NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        [dateFormatter setCalendar:calendar];
+        
+        for (NSInteger day = 1; day < 365; day += 7)
+        {
+            [dateComponents setDay:day];
+            NSDate *date = [calendar dateFromComponents:dateComponents];
+            
+            Event *newEvent = [NSEntityDescription insertNewObjectForEntityForName:@"Event" inManagedObjectContext:context];
+            newEvent.timeStamp = date;
+            newEvent.title = [NSString stringWithFormat:@"Gregorian: %@ (day %d)", [dateFormatter stringFromDate:date], [dateComponents day]];
+        }
+        
+        [context save:NULL];
     }
     
     return _persistentStoreCoordinator;
